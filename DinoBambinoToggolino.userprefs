@@ -1,8 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\GameOfGames\Assets\Scripts\PlayerMovement.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UnitPlayer.cs">
     <Files>
-      <File FileName="..\..\GameOfGames\Assets\Scripts\PlayerMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Index.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Inventory.cs" Line="51" Column="23" />
+      <File FileName="Assets\Scripts\ItemDatabase.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UnitPlayer.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

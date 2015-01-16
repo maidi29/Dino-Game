@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: 22f10ce221a1df049a62deee0003c4bd
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - parentGameObject: {fileID: 100058, guid: acbeb28b36cc4a545a4ac440918ba7e8, type: 3}
+  - InventoryGO: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

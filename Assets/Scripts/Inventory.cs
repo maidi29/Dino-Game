@@ -168,11 +168,8 @@ public class Inventory : MonoBehaviour {
 	void UseItem() {
 		int i = 0;
 
-		if (slots[i].itemID == 6){
-			kessel.transform.parent = null;
-			kessel.SetActive (true);
-		}
-		else if (slots[i].itemID == 1){
+
+		if (slots[i].itemID == 1){
 			holz.transform.parent = null;
 			holz.SetActive (true);
 		}
@@ -191,6 +188,10 @@ public class Inventory : MonoBehaviour {
 		else if (slots [i].itemID == 5) {
 			eimer.transform.parent = null;
 			eimer.SetActive (true);
+		}
+		else if (slots[i].itemID == 6){
+			kessel.transform.parent = null;
+			kessel.SetActive (true);
 		}
 		
 	}
