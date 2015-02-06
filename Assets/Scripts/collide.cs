@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class collide : MonoBehaviour {
-	public GameObject parentGameObject;
+	//public GameObject parentGameObject;
 	public GameObject InventoryGO;
 	private Index indexScript;
 	private Inventory inventoryScript;
@@ -25,7 +25,7 @@ public class collide : MonoBehaviour {
 				if (Input.GetKey (KeyCode.E)) {
 					other.gameObject.SetActive (false);
 					indexScript = other.gameObject.GetComponent<Index> ();
-					other.transform.parent = parentGameObject.transform;
+					other.transform.parent = null;
 					inventoryScript.AddItem (indexScript.index);
 					tipp.text = "";
 				}

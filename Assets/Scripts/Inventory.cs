@@ -20,13 +20,12 @@ public class Inventory : MonoBehaviour {
 	public GameObject feuerzeug;
 	public GameObject kessel;
 	public GameObject holz;
-
 	public GameObject eimer;
-
 	public GameObject foen;
 	public GameObject hammer;
 	public GameObject eisblock;
 
+	GameObject dino;
 
 
 	GUIText tipp;
@@ -41,6 +40,7 @@ public class Inventory : MonoBehaviour {
 		}
 		tipp = GameObject.Find("Tipp").guiText;
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
+		dino = GameObject.FindGameObjectWithTag ("Player");
 
 	}
 		
@@ -92,7 +92,7 @@ public class Inventory : MonoBehaviour {
 					if (slotRect.Contains(e.mousePosition)){
 						tooltip = CreateTooltip (slots[i]);
 						showTooltip = true;
-						if(e.button == 0 && e.type == EventType.mouseDrag && !draggingItem) {
+						/*if(e.button == 0 && e.type == EventType.mouseDrag && !draggingItem) {
 							draggingItem = true;
 							prevIndex = i;
 							draggedItem = slots[i];
@@ -103,10 +103,14 @@ public class Inventory : MonoBehaviour {
 							inventory [i] = draggedItem;
 							draggingItem = false;
 							draggedItem = null;
-						}
+						}*/
 						if (e.isMouse && e.type == EventType.mouseDown && e.button == 1){
 							UseItem();
 							RemoveItem(slots[i].itemID);
+						}
+						if (e.isMouse && e.type == EventType.mouseDown && e.button == 0) {
+							HoldItem();
+							RemoveItem (slots[i].itemID);
 						}
 					}
 				}
@@ -164,33 +168,79 @@ public class Inventory : MonoBehaviour {
 		}
 		return result;
 	}
+	void HoldItem () {
+		int i = 0;
+
+		if (slots [i].itemID == 1) {
+			holz.transform.position = dino.transform.position;
+			holz.transform.parent = dino.transform;
+			holz.SetActive (true);
+		}
+
+		else if (slots[i].itemID == 2){
+			feuerzeug.transform.position = dino.transform.position;
+			feuerzeug.transform.parent = dino.transform;
+			feuerzeug.SetActive (true);
+		}
+		else if (slots[i].itemID == 3){
+			hammer.transform.position = dino.transform.position;
+			hammer.transform.parent = dino.transform;
+			hammer.SetActive (true);
+		}
+		else if (slots[i].itemID == 4){
+			foen.transform.position = dino.transform.position;
+			foen.transform.parent = dino.transform;
+			foen.SetActive (true);
+		}			
+		else if (slots [i].itemID == 5) {
+			eimer.transform.position = dino.transform.position;
+			eimer.transform.parent = dino.transform;
+			eimer.SetActive (true);
+		}
+		else if (slots[i].itemID == 6){
+			kessel.transform.position = dino.transform.position;
+			kessel.transform.parent = dino.transform;
+			kessel.SetActive (true);
+		}
+	}
 
 	void UseItem() {
 		int i = 0;
 
-
 		if (slots[i].itemID == 1){
 			holz.transform.parent = null;
+			holz.transform.position = dino.transform.position;
+			holz.transform.Translate (new Vector3(1,0,0));
 			holz.SetActive (true);
 		}
 		else if (slots[i].itemID == 2){
 			feuerzeug.transform.parent = null;
+			feuerzeug.transform.position = dino.transform.position;
+			feuerzeug.transform.Translate (new Vector3(1,0,0));
 			feuerzeug.SetActive (true);
 		}
 		else if (slots[i].itemID == 3){
 			hammer.transform.parent = null;
+			hammer.transform.position = dino.transform.position;
+			hammer.transform.Translate (new Vector3(1,0,0));
 			hammer.SetActive (true);
 		}
 		else if (slots[i].itemID == 4){
 			foen.transform.parent = null;
+			foen.transform.position = dino.transform.position;
+			foen.transform.Translate (new Vector3(1,0,0));
 			foen.SetActive (true);
 		}			
 		else if (slots [i].itemID == 5) {
 			eimer.transform.parent = null;
+			eimer.transform.position = dino.transform.position;
+			eimer.transform.Translate (new Vector3(1,0,0));
 			eimer.SetActive (true);
 		}
 		else if (slots[i].itemID == 6){
 			kessel.transform.parent = null;
+			kessel.transform.position = dino.transform.position;
+			kessel.transform.Translate (new Vector3(1,0,0));
 			kessel.SetActive (true);
 		}
 		
