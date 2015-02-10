@@ -23,7 +23,9 @@ public class collide : MonoBehaviour {
 		void OnTriggerStay(Collider other) {
 			if (other.gameObject.tag == "Item") {
 				if (Input.GetKey (KeyCode.E)) {
+					inventoryScript.use = false;
 					other.gameObject.SetActive (false);
+					other.gameObject.GetComponent<ItemBounce>().enabled = false;
 					indexScript = other.gameObject.GetComponent<Index> ();
 					inventoryScript.AddItem (indexScript.index);
 					tipp.text = "";

@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour {
 	
 	GUIText tipp;
 
-	bool use = false;
+	public bool use = false;
 	
 	
 	// Use this for initialization
@@ -49,6 +49,8 @@ public class Inventory : MonoBehaviour {
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
 		dino = GameObject.FindGameObjectWithTag ("Player");
 		hands = dino.transform.FindChild ("Krallen3");
+
+
 
 	}
 	
@@ -117,8 +119,13 @@ public class Inventory : MonoBehaviour {
 							RemoveItem(slots[i].itemID);
 						}
 						if (e.isMouse && e.type == EventType.mouseDown && e.button == 0) {
+							if (use == false){
 							UseItem(slots[i].itemID,i);
 							RemoveItem (slots[i].itemID);
+							}
+							else if (use == true) {
+								return;
+							}
 						}
 					}
 				}
