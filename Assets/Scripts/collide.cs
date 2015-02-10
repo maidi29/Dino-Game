@@ -25,7 +25,6 @@ public class collide : MonoBehaviour {
 				if (Input.GetKey (KeyCode.E)) {
 					other.gameObject.SetActive (false);
 					indexScript = other.gameObject.GetComponent<Index> ();
-					other.transform.parent = null;
 					inventoryScript.AddItem (indexScript.index);
 					tipp.text = "";
 				}

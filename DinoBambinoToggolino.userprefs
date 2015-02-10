@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Inventory.cs">
     <Files>
-      <File FileName="Assets\Scripts\Inventory.cs" Line="42" Column="1" />
-      <File FileName="Assets\Scripts\ItemDatabase.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Inventory.cs" Line="98" Column="26" />
+      <File FileName="Assets\Scripts\ItemDatabase.cs" Line="12" Column="5" />
       <File FileName="Assets\Scripts\Index.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\UnitPlayer.cs" Line="43" Column="10" />
-      <File FileName="Assets\Scripts\collide.cs" Line="26" Column="36" />
-      <File FileName="Assets\Scripts\Item_Bounce.js" Line="16" Column="20" />
+      <File FileName="Assets\Scripts\collide.cs" Line="28" Column="50" />
+      <File FileName="Assets\Scripts\Item.cs" Line="14" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

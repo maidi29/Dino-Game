@@ -15,8 +15,8 @@ public class Inventory : MonoBehaviour {
 	private bool draggingItem;
 	private Item draggedItem;
 	private int prevIndex;
-
-
+	
+	
 	public GameObject feuerzeug;
 	public GameObject kessel;
 	public GameObject holz;
@@ -24,35 +24,33 @@ public class Inventory : MonoBehaviour {
 	public GameObject foen;
 	public GameObject hammer;
 	public GameObject eisblock;
-
+	
 	GameObject dino;
 	Transform hands;
-
+	
 	Vector3 dinoposition;
 	Vector3 vec;
-
+	
 	GUIText tipp;
-
+	
 	
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i < (slotsX * slotsY); i++){
 			slots.Add(new Item());
 			inventory.Add (new Item());
-
+			
 		}
 		tipp = GameObject.Find("Tipp").guiText;
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
 		dino = GameObject.FindGameObjectWithTag ("Player");
 		hands = dino.transform.FindChild ("Krallen3");
-
-		vec = transform.TransformDirection (Vector3.forward) * 3;
-
-	}
 		
+		vec = transform.TransformDirection (Vector3.forward) * 3;
+		
+	}
+	
 	void Update () {
-		dinoposition = dino.transform.position;
-
 		if (Input.GetButtonDown ("Inventory")) {
 			showInventory = !showInventory;
 		}
@@ -62,9 +60,7 @@ public class Inventory : MonoBehaviour {
 		else if (!showInventory) {
 			tipp.text = "Drücke I um das Inventar zu öffnen.";
 		}
-
-				
-		
+		dinoposition = dino.transform.position;
 	}
 	
 	void OnGUI () {
@@ -145,7 +141,7 @@ public class Inventory : MonoBehaviour {
 	
 	void RemoveItem (int id) {
 		for (int i = 0; i < inventory.Count; i++) {
-			if (inventory [i].itemID == id) {
+			if (inventory[i].itemID == id) {
 				inventory[i] = new Item();
 				break;
 			}
@@ -176,16 +172,16 @@ public class Inventory : MonoBehaviour {
 		}
 		return result;
 	}
-
+	
 	void HoldItem () {
 		int i = 0;
-
+		
 		if (slots [i].itemID == 1) {
 			holz.transform.position = dinoposition;
 			holz.transform.parent = hands;
 			holz.SetActive (true);
 		}
-
+		
 		else if (slots[i].itemID == 2){
 			feuerzeug.transform.position = dinoposition;
 			feuerzeug.transform.parent = hands;
@@ -212,10 +208,10 @@ public class Inventory : MonoBehaviour {
 			kessel.SetActive (true);
 		}
 	}
-
+	
 	void UseItem() {
 		int i = 0;
-
+		
 		if (slots[i].itemID == 1){
 			holz.transform.parent = null;
 			holz.transform.position = dinoposition;
@@ -248,7 +244,7 @@ public class Inventory : MonoBehaviour {
 			kessel.SetActive (true);
 		}	
 	}
-
+	
 	void SaveInventory () {
 		for(int i = 0; i < inventory.Count; i++) {
 			PlayerPrefs.SetInt ("Inventory "+ i, inventory[i].itemID);
