@@ -24,7 +24,8 @@ public class Inventory : MonoBehaviour {
 	public GameObject foen;
 	public GameObject hammer;
 	public GameObject eisblock;
-	
+
+	GameObject objects;
 	GameObject dino;
 	Transform hands;
 	
@@ -33,6 +34,8 @@ public class Inventory : MonoBehaviour {
 	Vector3 holdvec;
 	
 	GUIText tipp;
+
+	bool use = false;
 	
 	
 	// Use this for initialization
@@ -46,9 +49,7 @@ public class Inventory : MonoBehaviour {
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
 		dino = GameObject.FindGameObjectWithTag ("Player");
 		hands = dino.transform.FindChild ("Krallen3");
-		
 
-		
 	}
 	
 	void Update () {
@@ -112,11 +113,11 @@ public class Inventory : MonoBehaviour {
 							draggedItem = null;
 						}
 						if (e.isMouse && e.type == EventType.mouseDown && e.button == 1){
-							UseItem(slots[i].itemID,i);
+							PlaceItem(slots[i].itemID,i);
 							RemoveItem(slots[i].itemID);
 						}
 						if (e.isMouse && e.type == EventType.mouseDown && e.button == 0) {
-							HoldItem(slots[i].itemID,i);
+							UseItem(slots[i].itemID,i);
 							RemoveItem (slots[i].itemID);
 						}
 					}
@@ -176,9 +177,11 @@ public class Inventory : MonoBehaviour {
 		return result;
 	}
 	
-	void HoldItem (int id, int slot) {
+	void UseItem (int id, int slot) {
+		use = true;
 		switch (id){
 		case 1: {
+			//holz.GetComponent<ItemBounce>().enabled = false;
 			holz.transform.position = dinoposition + holdvec;
 			holz.transform.parent = hands;
 			holz.SetActive (true);
@@ -218,7 +221,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	
-	void UseItem(int id, int slot) {
+	void PlaceItem(int id, int slot) {
 		switch (id) {
 		case 1: {
 			holz.transform.parent = null;
