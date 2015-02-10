@@ -29,7 +29,8 @@ public class Inventory : MonoBehaviour {
 	Transform hands;
 	
 	Vector3 dinoposition;
-	Vector3 vec;
+	Vector3 placevec;
+	Vector3 holdvec;
 	
 	GUIText tipp;
 	
@@ -46,7 +47,7 @@ public class Inventory : MonoBehaviour {
 		dino = GameObject.FindGameObjectWithTag ("Player");
 		hands = dino.transform.FindChild ("Krallen3");
 		
-		vec = transform.TransformDirection (Vector3.forward) * 3;
+
 		
 	}
 	
@@ -61,6 +62,8 @@ public class Inventory : MonoBehaviour {
 			tipp.text = "Drücke I um das Inventar zu öffnen.";
 		}
 		dinoposition = dino.transform.position;
+		placevec = dino.transform.forward * 3;
+		holdvec = dino.transform.forward * 1.5f;
 	}
 	
 	void OnGUI () {
@@ -109,11 +112,11 @@ public class Inventory : MonoBehaviour {
 							draggedItem = null;
 						}
 						if (e.isMouse && e.type == EventType.mouseDown && e.button == 1){
-							UseItem();
+							UseItem(slots[i].itemID,i);
 							RemoveItem(slots[i].itemID);
 						}
 						if (e.isMouse && e.type == EventType.mouseDown && e.button == 0) {
-							HoldItem();
+							HoldItem(slots[i].itemID,i);
 							RemoveItem (slots[i].itemID);
 						}
 					}
@@ -135,7 +138,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	string CreateTooltip (Item item) {
-		tooltip = item.itemName + "\n\n" + item.itemDesc + "\n\n Rechtsklick um zu benutzen";
+		tooltip = item.itemName + "\n\n" + item.itemDesc + "\n\n Linksklick um zu benutzen \n\n Rechtsklick um abzulegen";
 		return tooltip;
 	}
 	
@@ -173,76 +176,88 @@ public class Inventory : MonoBehaviour {
 		return result;
 	}
 	
-	void HoldItem () {
-		int i = 0;
-		
-		if (slots [i].itemID == 1) {
-			holz.transform.position = dinoposition;
+	void HoldItem (int id, int slot) {
+		switch (id){
+		case 1: {
+			holz.transform.position = dinoposition + holdvec;
 			holz.transform.parent = hands;
 			holz.SetActive (true);
+			break;
 		}
 		
-		else if (slots[i].itemID == 2){
-			feuerzeug.transform.position = dinoposition;
+		case 2: {
+			feuerzeug.transform.position = dinoposition + holdvec;
 			feuerzeug.transform.parent = hands;
 			feuerzeug.SetActive (true);
+			break;
 		}
-		else if (slots[i].itemID == 3){
-			hammer.transform.position = dinoposition;
+		case 3: {
+			hammer.transform.position = dinoposition + holdvec;
 			hammer.transform.parent = hands;
 			hammer.SetActive (true);
+			break;
 		}
-		else if (slots[i].itemID == 4){
-			foen.transform.position = dinoposition;
+		case 4: {
+			foen.transform.position = dinoposition + holdvec;
 			foen.transform.parent = hands;
 			foen.SetActive (true);
+			break;
 		}			
-		else if (slots [i].itemID == 5) {
-			eimer.transform.position = dinoposition;
+		case 5: {
+			eimer.transform.position = dinoposition + holdvec;
 			eimer.transform.parent = hands;
 			eimer.SetActive (true);
+			break;
 		}
-		else if (slots[i].itemID == 6){
-			kessel.transform.position = dinoposition;
+		case 6: {
+			kessel.transform.position = dinoposition + holdvec;
 			kessel.transform.parent = hands;
 			kessel.SetActive (true);
+			break;
+		}
 		}
 	}
 	
-	void UseItem() {
-		int i = 0;
-		
-		if (slots[i].itemID == 1){
+	void UseItem(int id, int slot) {
+		switch (id) {
+		case 1: {
 			holz.transform.parent = null;
-			holz.transform.position = dinoposition;
+			holz.transform.position = dinoposition + placevec;
 			//holz.transform.position += vec;
 			holz.SetActive (true);
+			break;
 		}
-		else if (slots[i].itemID == 2){
+		case 2: {
 			feuerzeug.transform.parent = null;
-			feuerzeug.transform.position = dinoposition;
+			feuerzeug.transform.position = dinoposition + placevec;
 			feuerzeug.SetActive (true);
+			break;
 		}
-		else if (slots[i].itemID == 3){
+		case 3: {
 			hammer.transform.parent = null;
-			hammer.transform.position = dinoposition;
+			hammer.transform.position = dinoposition + placevec;
 			hammer.SetActive (true);
+			break;
 		}
-		else if (slots[i].itemID == 4){
+		case 4: {
 			foen.transform.parent = null;
-			foen.transform.position = dinoposition;
+			foen.transform.position = dinoposition + placevec;
 			foen.SetActive (true);
+			break;
 		}			
-		else if (slots [i].itemID == 5) {
+		case 5:  {
 			eimer.transform.parent = null;
-			eimer.transform.position = dinoposition;
+			eimer.transform.position = dinoposition + placevec;
 			eimer.SetActive (true);
+			break;
 		}
-		else if (slots[i].itemID == 6){
+		case 6:{
 			kessel.transform.parent = null;
-			kessel.transform.position = dinoposition;
+			kessel.transform.position = dinoposition + placevec;
 			kessel.SetActive (true);
+			break;
 		}	
+		}
 	}
 	
 	void SaveInventory () {
