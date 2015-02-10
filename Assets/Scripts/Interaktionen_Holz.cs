@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Interaktionen_Holz : MonoBehaviour {
-	GameObject feuerzeug;
+	//GameObject feuerzeug;
 	public ParticleSystem feuer;
 	public ParticleSystem rauch;
 	public GameObject inventoryGO;
@@ -12,9 +12,9 @@ public class Interaktionen_Holz : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		inventoryScript = inventoryGO.GetComponent<Inventory> ();
-		feuerzeug = GameObject.Find ("Feuerzeug");
+		//feuerzeug = GameObject.Find ("Feuerzeug");
 		feuer.enableEmission = false;
-		rauch.enableEmission=false;
+		rauch.enableEmission = false;
 	}
 	
 	// Update is called once per frame
@@ -22,12 +22,13 @@ public class Interaktionen_Holz : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter (Collider collider) {
-		if (collider == feuerzeug) {
-			if (inventoryScript.holz.activeInHierarchy) {
+	void OnCollisionEnter (Collision col) {
+		if (col.gameObject.name == "Feuerzeug") {
+			Debug.Log("Angezündet");
+			//if (inventoryScript.holz.activeInHierarchy) {
 				feuer.enableEmission = true;
 				rauch.enableEmission = true;
-			}
+			//}
 		}
 	}
 }
