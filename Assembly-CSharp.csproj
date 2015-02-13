@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\DinoController.cs" />
      <Compile Include="Assets\Scripts\Game Controller\HashIDs.cs" />
      <Compile Include="Assets\Scripts\Index.cs" />
+     <Compile Include="Assets\Scripts\Interaktionen_Feuerzeug.cs" />
      <Compile Include="Assets\Scripts\Interaktionen_Holz.cs" />
      <Compile Include="Assets\Scripts\Inventory.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />

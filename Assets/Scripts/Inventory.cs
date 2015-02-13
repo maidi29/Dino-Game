@@ -43,7 +43,6 @@ public class Inventory : MonoBehaviour {
 		for (int i = 0; i < (slotsX * slotsY); i++){
 			slots.Add(new Item());
 			inventory.Add (new Item());
-			
 		}
 		tipp = GameObject.Find("Tipp").guiText;
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
