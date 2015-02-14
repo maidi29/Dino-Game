@@ -2,49 +2,75 @@
 using System.Collections;
 
 public class Interaktionen_Feuerzeug : MonoBehaviour {
+
+	public ItemDatabase database;
+	public GUISkin skin;
+
+	GameObject holz;
+	GameObject kessel;
+	GameObject hammer;
+	GameObject fön;
+	GameObject eimer;
+	GameObject eisblock;
+
+	string meldung;
+	bool showmeldung = false;
+
 	public ParticleSystem feuer;
 	public ParticleSystem rauch;
-	public GameObject inventoryGO;
-	public GUISkin skin;
-	GameObject holz;
-	private Inventory inventoryScript;
-	public ItemDatabase database;
-	float dist;
-	GameObject target;
-	// Use this for initialization
+	
 	void Start () {
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
-		inventoryScript = inventoryGO.GetComponent<Inventory> ();
 		holz = GameObject.Find ("Holz");
+		kessel = GameObject.Find ("Kessel");
+		hammer = GameObject.Find ("Hammer");
+		fön = GameObject.Find ("Fön");
+		eimer = GameObject.Find ("Eimer");
+		eisblock = GameObject.Find ("Eisblock");
 		feuer.enableEmission = false;
 		rauch.enableEmission = false;
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		GameObject[] items = GameObject.FindGameObjectsWithTag ("Item");
-		foreach(GameObject target in items) {
-				dist = Vector3.Distance(target.transform.position, transform.position);
-				print (dist);
 
+	void Update () {
+	}
+
+	void OnGUI() {
+		if (showmeldung) {
+			GUI.Box (new Rect (300, 20, 300, 100), meldung, skin.GetStyle ("Slot"));
 		}
-		if (dist <= 1 && gameObject.activeInHierarchy) {
-			for(int j = 0; j < database.items.Count; j++){
-				if (database.items[j].itemID == 1) {
-					if(holz.activeInHierarchy) {
-						print ("Angezündet");
-						feuer.enableEmission = true;
-						rauch.enableEmission = true;
-						database.items[1].itemHeat = 800;
-					}
-				}
-				if (database.items[j].itemID == 3) {
-					print ("do something");
-					//Rect meldung = new Rect (500, 200, 300, 60);
-					//GUI.Box (meldung, "Der Hammer wird heiß, aber wozu soll das gut sein?", skin.GetStyle("Slot"));
-				}
-			}
+	}
+
+	void OnTriggerEnter (Collider collider) {
+		if (collider.gameObject == holz) {
+			feuer.enableEmission = true;
+			rauch.enableEmission = true;
+			database.items[1].itemHeat = 800;
 		}
+		if (collider.gameObject == kessel) {
+			meldung = "Der Kessel wird warm...\n\naber das nützt nichts.";
+			showmeldung = true;
+		}
+		if (collider.gameObject == hammer) {
+			meldung = "Das nützt nichts.";
+			showmeldung = true;
+		}
+		if (collider.gameObject == fön) {
+			meldung = "Das nützt nichts.";
+			showmeldung = true;
+		}
+		if (collider.gameObject == eimer) {
+			meldung = "Der Eimer schmilzt!";
+			Destroy(collider.gameObject);
+		}
+		if (collider.gameObject == eisblock) {
+			meldung = "Das Eis schmilzt zu langsam,\n\nich muss einen anderen Weg finden!";
+			showmeldung = true;
+		}
+	}
+
+	void OnTriggerExit (Collider collider) {
+		showmeldung = false;
+		meldung = "";
 	}
 }

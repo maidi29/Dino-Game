@@ -33,7 +33,7 @@ public class collide : MonoBehaviour {
 				if (other.gameObject.activeSelf) {
 					tipp.text = "Drücke E um das Objekt aufzusammeln.";
 				}
-		}
+			}
 		}
 		
 		void OnTriggerExit(Collider other) {
