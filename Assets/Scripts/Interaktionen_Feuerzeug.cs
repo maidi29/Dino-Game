@@ -13,6 +13,8 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 	GameObject eimer;
 	GameObject eisblock;
 
+	Animator animator;
+
 	string meldung;
 	bool showmeldung = false;
 
@@ -27,8 +29,11 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 		fön = GameObject.Find ("Fön");
 		eimer = GameObject.Find ("Eimer");
 		eisblock = GameObject.Find ("Eisblock");
+
 		feuer.enableEmission = false;
 		rauch.enableEmission = false;
+
+		animator = eimer.GetComponent<Animator> ();
 
 	}
 
@@ -61,7 +66,8 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 		}
 		if (collider.gameObject == eimer) {
 			meldung = "Der Eimer schmilzt!";
-			Destroy(collider.gameObject);
+			animator.SetTrigger("Melt");
+			Destroy(collider.gameObject, 5f);
 		}
 		if (collider.gameObject == eisblock) {
 			meldung = "Das Eis schmilzt zu langsam,\n\nich muss einen anderen Weg finden!";
