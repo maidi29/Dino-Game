@@ -66,6 +66,7 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 		}
 		if (collider.gameObject == eimer) {
 			meldung = "Der Eimer schmilzt!";
+			showmeldung = true;
 			animator.SetTrigger("Melt");
 			Destroy(collider.gameObject, 5f);
 		}

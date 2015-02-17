@@ -65,7 +65,7 @@ public class Inventory : MonoBehaviour {
 		}
 		dinoposition = dino.transform.position;
 		placevec = dino.transform.forward * 3;
-		holdvec = dino.transform.forward * 1.5f;
+		holdvec = dino.transform.forward * 2.5f;
 	}
 	
 	void OnGUI () {
