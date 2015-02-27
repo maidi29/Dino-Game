@@ -58,9 +58,12 @@
      <Compile Include="Assets\Scripts\ItemBounce.cs" />
      <Compile Include="Assets\Scripts\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\Rotator.cs" />
+     <Compile Include="Assets\Scripts\StartGame.cs" />
      <Compile Include="Assets\Scripts\Unit.cs" />
      <Compile Include="Assets\Scripts\UnitPlayer.cs" />
      <Compile Include="Assets\Scripts\collide.cs" />
+     <Compile Include="Assets\Scripts\interaktionen_fön.cs" />
+     <Compile Include="Assets\Scripts\interaktionen_hammer.cs" />
      <Compile Include="Assets\Scripts\minimap.cs" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
