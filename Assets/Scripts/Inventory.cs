@@ -32,6 +32,7 @@ public class Inventory : MonoBehaviour {
 	Vector3 dinoposition;
 	Vector3 placevec;
 	Vector3 holdvec;
+	Vector3 vecup;
 	
 	GUIText tipp;
 
@@ -66,6 +67,7 @@ public class Inventory : MonoBehaviour {
 		dinoposition = dino.transform.position;
 		placevec = dino.transform.forward * 3;
 		holdvec = dino.transform.forward * 2.5f;
+		vecup = dino.transform.up * 1.5f;
 	}
 	
 	void OnGUI () {
@@ -188,7 +190,7 @@ public class Inventory : MonoBehaviour {
 		switch (id){
 		case 1: {
 			//holz.GetComponent<ItemBounce>().enabled = false;
-			holz.transform.position = dinoposition + holdvec;
+			holz.transform.position = dinoposition + holdvec + vecup;
 			holz.transform.parent = hands;
 			holz.SetActive (true);
 			break;
@@ -201,7 +203,7 @@ public class Inventory : MonoBehaviour {
 			break;
 		}
 		case 3: {
-			hammer.transform.position = dinoposition + holdvec;
+			hammer.transform.position = dinoposition + holdvec+ vecup;
 			hammer.transform.parent = hands;
 			hammer.SetActive (true);
 			break;
@@ -213,13 +215,13 @@ public class Inventory : MonoBehaviour {
 			break;
 		}			
 		case 5: {
-			eimer.transform.position = dinoposition + holdvec;
+			eimer.transform.position = dinoposition + holdvec+ vecup;
 			eimer.transform.parent = hands;
 			eimer.SetActive (true);
 			break;
 		}
 		case 6: {
-			kessel.transform.position = dinoposition + holdvec;
+			kessel.transform.position = dinoposition + holdvec+ vecup;
 			kessel.transform.parent = hands;
 			kessel.SetActive (true);
 			break;
@@ -231,7 +233,7 @@ public class Inventory : MonoBehaviour {
 		switch (id) {
 		case 1: {
 			holz.transform.parent = null;
-			holz.transform.position = dinoposition + placevec;
+			holz.transform.position = dinoposition + placevec+ vecup;
 			//holz.transform.position += vec;
 			holz.SetActive (true);
 			break;
@@ -244,7 +246,7 @@ public class Inventory : MonoBehaviour {
 		}
 		case 3: {
 			hammer.transform.parent = null;
-			hammer.transform.position = dinoposition + placevec;
+			hammer.transform.position = dinoposition + placevec+ vecup;
 			hammer.SetActive (true);
 			break;
 		}
@@ -256,13 +258,13 @@ public class Inventory : MonoBehaviour {
 		}			
 		case 5:  {
 			eimer.transform.parent = null;
-			eimer.transform.position = dinoposition + placevec;
+			eimer.transform.position = dinoposition + placevec+ vecup;
 			eimer.SetActive (true);
 			break;
 		}
 		case 6:{
 			kessel.transform.parent = null;
-			kessel.transform.position = dinoposition + placevec;
+			kessel.transform.position = dinoposition + placevec+ vecup;
 			kessel.SetActive (true);
 			break;
 		}	

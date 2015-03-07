@@ -73,7 +73,12 @@ public class Interaktionen_Kessel : MonoBehaviour {
 
 
 		if (collider.gameObject == eisblock) {
-			meldung = "Das Eis schmilzt zu langsam,\n\nich muss einen anderen Weg finden!";
+			if (database.items [6].itemHeat == 800) {
+				meldung = "Super, das Eis schmilzt! \n\nSo kann ich mein Baby befreien!";
+			}
+			else {
+			meldung = "Das nützt nichts.";
+			}
 			showmeldung = true;
 		}
 	}
