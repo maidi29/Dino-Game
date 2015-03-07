@@ -51,6 +51,8 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 			feuer.enableEmission = true;
 			rauch.enableEmission = true;
 			database.items[1].itemHeat = 800;
+			meldung = "Juhu, das Holz brennt!";
+			showmeldung = true;
 		}
 		if (collider.gameObject == kessel) {
 			meldung = "Der Kessel wird warm...\n\naber das nützt nichts.";
