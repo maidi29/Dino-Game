@@ -13,10 +13,12 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	GameObject eisblock;
 	GameObject see;
 	
-	Animator animator;
+
+	Animator anim2;
 	
 	string meldung;
 	bool showmeldung = false;
+	 
 	
 	public ParticleSystem wasser;
 	public ParticleSystem rauch2;
@@ -27,20 +29,24 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		hammer = GameObject.Find ("Hammer");
 		fön = GameObject.Find ("Fön");
 		eimer = GameObject.Find ("Eimer");
-		eisblock = GameObject.Find ("Eisblock");
+	
 		see = GameObject.Find ("Daylight Water");
 		holz = GameObject.Find ("Holz");
 		
 		wasser.enableEmission = false;
 		rauch2.enableEmission = false;
 
-		
-		animator = eimer.GetComponent<Animator> ();
+		anim2 = GetComponent <Animator> ();
+
+	
 		
 	}
 	
 	void Update () {
-	}
+		}
+
+	
+
 	
 	void OnGUI() {
 		if (showmeldung) {
@@ -67,11 +73,12 @@ public class Interaktionen_Kessel : MonoBehaviour {
 			showmeldung = true;
 		}
 
-
+		
 		if (collider.gameObject == eisblock) {
-			meldung = "Das Eis schmilzt zu langsam,\n\nich muss einen anderen Weg finden!";
-			showmeldung = true;
-		}
+			anim2.SetTrigger("schmelzen");
+		} 
+		
+
 	}
 	
 	void OnTriggerExit (Collider collider) {

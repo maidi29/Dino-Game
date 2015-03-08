@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\interaktionen_fön.cs" />
      <Compile Include="Assets\Scripts\interaktionen_hammer.cs" />
      <Compile Include="Assets\Scripts\minimap.cs" />
+     <Compile Include="Assets\Scripts\schmelzen.cs" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
