@@ -51,11 +51,15 @@ public class Interaktionen_Eimer: MonoBehaviour {
 	void OnTriggerEnter (Collider collider) {
 		if (collider.gameObject == see) {
 			wasser2.enableEmission = true;
+			meldung = "Du hast erfolgreich \n\nWasser geschöpft.";
+			showmeldung = true;
 		}
 		
 		if ((collider.gameObject == kessel)&(wasser2.enableEmission==true)) {
 		
 			wasser.enableEmission = true;
+			meldung = "Das Wasser aus dem Eimer \n\nist jetzt im Kessel.";
+			showmeldung = true;
 		}
 		
 		if (collider.gameObject == hammer) {
