@@ -3,11 +3,10 @@ using System.Collections;
 
 public class schmelzen : MonoBehaviour {
 
-	
-
 	GameObject eisblock;
 	GameObject Kessel;
 	bool animationSwitch = false;
+	public Animator animator;
 
 
 	// Use this for initialization
@@ -21,7 +20,8 @@ public class schmelzen : MonoBehaviour {
 
 		if (collider.gameObject == Kessel) {
 			animationSwitch = true;
-			eisblock.animation.CrossFade ("schmelzen");
+			animator.SetTrigger("schmelzen");
+			//eisblock.animation.CrossFade ("schmelzen");
 				} 
 	}
 }

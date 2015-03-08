@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\GameOfGames\Assets\Scripts\EnemyMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Interaktionen_Kessel.cs">
     <Files>
-      <File FileName="..\..\GameOfGames\Assets\Scripts\PlayerMovement.cs" Line="28" Column="4" />
-      <File FileName="..\..\GameOfGames\Assets\Scripts\EnemyMovement.cs" Line="21" Column="1" />
+      <File FileName="Assets\Scripts\Interaktionen_Eimer.cs" Line="30" Column="3" />
+      <File FileName="Assets\Scripts\Interaktionen_Feuerzeug.cs" Line="72" Column="4" />
+      <File FileName="Assets\Scripts\Interaktionen_Kessel.cs" Line="82" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

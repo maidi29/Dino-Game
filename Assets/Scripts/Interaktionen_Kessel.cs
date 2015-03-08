@@ -29,14 +29,14 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		hammer = GameObject.Find ("Hammer");
 		fön = GameObject.Find ("Fön");
 		eimer = GameObject.Find ("Eimer");
-	
+		eisblock = GameObject.Find ("Eisblock");
 		see = GameObject.Find ("Daylight Water");
 		holz = GameObject.Find ("Holz");
 		
 		wasser.enableEmission = false;
 		rauch2.enableEmission = false;
 
-		anim2 = GetComponent <Animator> ();
+		anim2 = eisblock.GetComponent <Animator> ();
 
 	
 		
@@ -79,17 +79,16 @@ public class Interaktionen_Kessel : MonoBehaviour {
 
 		
 		if (collider.gameObject == eisblock) {
-
-			anim2.SetTrigger("schmelzen");
-		} 
-		
-
+	
+			//anim2.SetTrigger("schmelzen");
 
 			if (database.items [6].itemHeat == 800) {
+				anim2.SetTrigger("schmelzen");
 				meldung = "Super, das Eis schmilzt! So kann ich mein Baby befreien!";
 			}
 			else {
 			meldung = "Das nützt nichts.";
+			}
 
 			showmeldung = true;
 		}

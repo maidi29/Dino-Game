@@ -33,8 +33,6 @@ public class Interaktionen_Eimer: MonoBehaviour {
 		
 		wasser.enableEmission = false;
 		wasser2.enableEmission = false;
-		
-		
 
 		
 	}
