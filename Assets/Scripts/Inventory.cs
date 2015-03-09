@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour {
 	public GameObject eimer;
 	public GameObject foen;
 	public GameObject hammer;
-	public GameObject eisblock;
+	//public GameObject eisblock;
 
 	GameObject objects;
 	GameObject dino;
@@ -189,7 +189,6 @@ public class Inventory : MonoBehaviour {
 		use = true;
 		switch (id){
 		case 1: {
-			//holz.GetComponent<ItemBounce>().enabled = false;
 			holz.transform.position = dinoposition + holdvec + vecup;
 			holz.transform.parent = hands;
 			holz.SetActive (true);
@@ -234,7 +233,6 @@ public class Inventory : MonoBehaviour {
 		case 1: {
 			holz.transform.parent = null;
 			holz.transform.position = dinoposition + placevec+ vecup;
-			//holz.transform.position += vec;
 			holz.SetActive (true);
 			break;
 		}

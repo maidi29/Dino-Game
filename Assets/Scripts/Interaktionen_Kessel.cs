@@ -18,8 +18,8 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	
 	string meldung;
 	bool showmeldung = false;
-	 
-	
+	bool ende = false; 
+	public float cooldown;
 	public ParticleSystem wasser;
 	public ParticleSystem rauch2;
 
@@ -37,13 +37,19 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		rauch2.enableEmission = false;
 
 		anim2 = eisblock.GetComponent <Animator> ();
-
+		cooldown = 13f;
 	
 		
 	}
 	
-	void Update () {
+	void FixedUpdate () {
+		if (ende == true) {
+			cooldown -= Time.deltaTime;
+			if (cooldown <= 0) {
+				Application.LoadLevel("Ende");
+			}
 		}
+	}
 
 	
 
@@ -79,12 +85,12 @@ public class Interaktionen_Kessel : MonoBehaviour {
 
 		
 		if (collider.gameObject == eisblock) {
-	
-			//anim2.SetTrigger("schmelzen");
+
 
 			if (database.items [6].itemHeat == 800) {
 				anim2.SetTrigger("schmelzen");
-				meldung = "Super, das Eis schmilzt! So kann ich mein Baby befreien!";
+				meldung = "Super, das Eis schmilzt!\n\nSo kann ich mein Baby befreien!";
+				ende = true;
 			}
 			else {
 			meldung = "Das nützt nichts.";

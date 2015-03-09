@@ -12,6 +12,7 @@ public class Interaktionen_Eimer: MonoBehaviour {
 	GameObject eisblock;
 	GameObject see;
 	GameObject kessel;
+	GameObject holz;
 	
 	Animator animator;
 	
@@ -27,10 +28,11 @@ public class Interaktionen_Eimer: MonoBehaviour {
 		hammer = GameObject.Find ("Hammer");
 		fön = GameObject.Find ("Fön");
 		kessel = GameObject.Find ("Kessel");
+		holz = GameObject.Find ("Holz");
 		eisblock = GameObject.Find ("Eisblock");
 		see = GameObject.Find ("Daylight Water");
 
-		
+		animator = gameObject.GetComponent<Animator> ();
 		wasser.enableEmission = false;
 		wasser2.enableEmission = false;
 
@@ -69,9 +71,20 @@ public class Interaktionen_Eimer: MonoBehaviour {
 			showmeldung = true;
 		}
 
+		if (collider.gameObject == holz) {
+			if(database.items[1].itemHeat == 800) {
+				meldung = "Der Eimer schmilzt!";
+				animator.SetTrigger("Melt");
+				Destroy(gameObject, 5f);
+			}
+			else {
+				meldung = "Das nützt nichts.";
+			}
+			showmeldung = true;
+		}
 			
 		if (collider.gameObject == eisblock) {
-			meldung = "Das Eis schmilzt zu langsam,\n\nich muss einen anderen Weg finden!";
+			meldung = "Das nützt nichts.";
 			showmeldung = true;
 		}
 	}
