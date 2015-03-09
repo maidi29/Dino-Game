@@ -166,6 +166,7 @@ public class Inventory : MonoBehaviour {
 				for(int j = 0; j < database.items.Count; j++){
 					if(database.items[j].itemID == id) {
 						inventory[i] = database.items[j];
+						break;
 					}
 				}
 				break;
