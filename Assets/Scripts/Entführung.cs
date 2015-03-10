@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StartEntführung : MonoBehaviour {
+public class Entführung : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -14,7 +13,7 @@ public class StartEntführung : MonoBehaviour {
 			Application.Quit ();
 		}
 	}
-
+	
 	void OnMouseDown () {
 		Application.LoadLevel ("Start");
 	}
