@@ -20,6 +20,7 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 
 	public ParticleSystem feuer;
 	public ParticleSystem rauch;
+
 	
 	void Start () {
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
@@ -54,10 +55,8 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 			meldung = "Juhu, das Holz brennt!";
 			showmeldung = true;
 		}
-		if (collider.gameObject == kessel) {
-			meldung = "Der Kessel wird warm...\n\naber das nützt nichts.";
-			showmeldung = true;
-		}
+
+
 		if (collider.gameObject == hammer) {
 			meldung = "Das nützt nichts.";
 			showmeldung = true;

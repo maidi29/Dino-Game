@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Cursor.cs" />
      <Compile Include="Assets\Scripts\DinoController.cs" />
+     <Compile Include="Assets\Scripts\Entführung.cs" />
      <Compile Include="Assets\Scripts\Game Controller\HashIDs.cs" />
      <Compile Include="Assets\Scripts\Index.cs" />
      <Compile Include="Assets\Scripts\Interaktionen_Eimer.cs" />
@@ -67,7 +68,7 @@
      <Compile Include="Assets\Scripts\interaktionen_fön.cs" />
      <Compile Include="Assets\Scripts\interaktionen_hammer.cs" />
      <Compile Include="Assets\Scripts\minimap.cs" />
-     <Compile Include="Assets\Scripts\schmelzen.cs" />
+     <Compile Include="Assets\Start2.cs" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Water (Basic)\Sources\Shaders\FX-Water Simple.shader" />
