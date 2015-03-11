@@ -62,17 +62,23 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	
 	void OnTriggerEnter (Collider collider) {
 		if (collider.gameObject == see) {
-						wasser.enableEmission = true;
+			wasser.enableEmission = true;
 			meldung = "Super, du hast \n\nerfolgreich Wasser geschöpft!";
 			showmeldung = true;
 				}
 										
-		if ((collider.gameObject == holz)&(database.items [1].itemHeat == 800)&(wasser.enableEmission==true)) {
-						database.items [6].itemHeat = 800;
-						rauch2.enableEmission = true;
-			meldung = "Sehr gut, \n\ndas Wasser ist jetzt heiß.";
-			showmeldung = true;
+		if (collider.gameObject == holz){
+			meldung = "Das nützt nichts.";
+			if (database.items [1].itemHeat == 800) {
+				meldung = "Der Kessel wird heiß.";
+				if(wasser.enableEmission==true) {
+					database.items [6].itemHeat = 800;
+					rauch2.enableEmission = true;
+					meldung = "Sehr gut, \n\ndas Wasser ist jetzt heiß.";
 				}
+			}
+			showmeldung = true;
+		}
 
 		if (collider.gameObject == hammer) {
 			meldung = "Das nützt nichts.";
@@ -85,8 +91,6 @@ public class Interaktionen_Kessel : MonoBehaviour {
 
 		
 		if (collider.gameObject == eisblock) {
-
-
 			if (database.items [6].itemHeat == 800) {
 				anim2.SetTrigger("schmelzen");
 				meldung = "Super, das Eis schmilzt!\n\nSo kann ich mein Baby befreien!";

@@ -20,6 +20,7 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 
 	public ParticleSystem feuer;
 	public ParticleSystem rauch;
+	public ParticleSystem wasserkessel;
 	
 	void Start () {
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
@@ -55,7 +56,10 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 			showmeldung = true;
 		}
 		if (collider.gameObject == kessel) {
-			meldung = "Der Kessel wird warm...\n\naber das nützt nichts.";
+			meldung = "Das nützt nichts.";
+			if (wasserkessel.enableEmission==true) {
+				meldung = "Das Wasser wird zu langsam warm.\n\nIch brauche ein größeres Feuer.";
+			}
 			showmeldung = true;
 		}
 		if (collider.gameObject == hammer) {

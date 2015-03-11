@@ -29,8 +29,9 @@ public class collide : MonoBehaviour {
 					indexScript = other.gameObject.GetComponent<Index> ();
 					inventoryScript.AddItem (indexScript.index);
 					tipp.text = "";
+					
 				}
-				if (other.gameObject.activeSelf) {
+			if (other.gameObject.activeSelf) {
 					tipp.text = "Drücke E um das Objekt aufzusammeln.";
 				}
 			}
