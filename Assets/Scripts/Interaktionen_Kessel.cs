@@ -19,9 +19,17 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	string meldung;
 	bool showmeldung = false;
 	bool ende = false; 
+	bool sieden = false;
+	bool blubbern = false;
+	bool erhitzen =false;
+
+
+	private float waterhot;
 	public float cooldown;
 	public ParticleSystem wasser;
 	public ParticleSystem rauch2;
+	public ParticleSystem rauch3;
+	public ParticleSystem kochen;
 
 	
 	void Start () {
@@ -35,20 +43,37 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		
 		wasser.enableEmission = false;
 		rauch2.enableEmission = false;
+		kochen.enableEmission = false;
+		rauch3.enableEmission = false;
 
 		anim2 = eisblock.GetComponent <Animator> ();
 		cooldown = 13f;
+		waterhot = 0;
 	
 		
 	}
-	
+
+
 	void FixedUpdate () {
 		if (ende == true) {
 			cooldown -= Time.deltaTime;
 			if (cooldown <= 0) {
 				Application.LoadLevel("Ende");
 			}
+			
+		 
 		}
+
+		if (erhitzen == true) {
+			waterhot += Time.deltaTime;
+		}
+			if (waterhot <= 5f) {
+				sieden = true;
+			}
+			else {
+				blubbern = true;
+			}
+	
 	}
 
 	
@@ -66,13 +91,25 @@ public class Interaktionen_Kessel : MonoBehaviour {
 			meldung = "Super, du hast \n\nerfolgreich Wasser geschöpft!";
 			showmeldung = true;
 				}
-										
-		if ((collider.gameObject == holz)&(database.items [1].itemHeat == 800)&(wasser.enableEmission==true)) {
-						database.items [6].itemHeat = 800;
-						rauch2.enableEmission = true;
-			meldung = "Sehr gut, \n\ndas Wasser ist jetzt heiß.";
-			showmeldung = true;
-				}
+
+		if ((collider.gameObject == holz) & (database.items [1].itemHeat == 800) & (wasser.enableEmission == true)) {
+
+			database.items [6].itemHeat = 800;
+			erhitzen = true;
+				
+		}   
+		
+			if (sieden==true) {			
+				rauch2.enableEmission = true;
+				meldung = "Sehr gut, \n\ndas Wasser wird langsam heiß.";
+				showmeldung = true;
+			}
+			if (blubbern==true){
+				kochen.enableEmission = true;
+				rauch3.enableEmission = true;
+				meldung = "Super,das Wasser ist nun heiß!";
+				showmeldung = true;
+			}
 
 		if (collider.gameObject == hammer) {
 			meldung = "Das nützt nichts.";
