@@ -221,7 +221,7 @@ public class Inventory : MonoBehaviour {
 			break;
 		}
 		case 6: {
-			kessel.transform.position = dinoposition + holdvec+ vecup;
+			kessel.transform.position = dinoposition + holdvec+ dino.transform.up * 0.75f;
 			kessel.transform.parent = hands;
 			kessel.SetActive (true);
 			break;
@@ -268,7 +268,7 @@ public class Inventory : MonoBehaviour {
 		}
 		case 6:{
 			kessel.transform.parent = null;
-			kessel.transform.position = dinoposition + placevec+ vecup;
+			kessel.transform.position = dinoposition + placevec+ dino.transform.up * 0.75f;
 			kessel.SetActive (true);
 			Physics.IgnoreCollision(kessel.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
 			break;

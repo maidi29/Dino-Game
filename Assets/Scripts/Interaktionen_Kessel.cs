@@ -13,7 +13,7 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	GameObject eisblock;
 	GameObject see;
 	
-
+	Animator anim;
 	Animator anim2;
 	
 	string meldung;
@@ -46,23 +46,37 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		kochen.enableEmission = false;
 		rauch3.enableEmission = false;
 
+		anim = gameObject.GetComponent<Animator> ();
 		anim2 = eisblock.GetComponent <Animator> ();
 		cooldown = 13f;
 		waterhot = 1f;
-	
-		
+
+		wasser.enableEmission = true;
 	}
 
 	void Update(){
-
 		if (erhitzen == true) {
 			waterhot += Time.deltaTime;
 		
 			if (waterhot <= 5f) {
 				sieden = true;
-			} else {
+			}
+			if (waterhot >= 5f) {
 				blubbern = true;
 			}
+		}
+		if (sieden == true) {			
+			rauch2.enableEmission = true;
+			database.items [6].itemHeat = 100;
+			meldung = "Sehr gut, \n\ndas Wasser wird langsam heiß.";
+			showmeldung = true;
+		}
+		if (blubbern == true) {
+			kochen.enableEmission = true;
+			rauch3.enableEmission = true;
+			database.items [6].itemHeat = 800;
+			meldung = "Super,das Wasser ist nun heiß!";
+			showmeldung = true;
 		}
 	}
 
@@ -95,27 +109,18 @@ public class Interaktionen_Kessel : MonoBehaviour {
 				}
 
 
-		if ((collider.gameObject == holz) && (database.items [1].itemHeat == 800) && (wasser.enableEmission == true)) {
-
-			database.items [6].itemHeat = 800;
-			erhitzen = true;
-				
-		  
-		
-			if (sieden == true) {			
-				rauch2.enableEmission = true;
-				meldung = "Sehr gut, \n\ndas Wasser wird langsam heiß.";
+		if (collider.gameObject == holz){
+		    if((database.items [1].itemHeat == 800) && (wasser.enableEmission == true)) {
+				database.items [6].itemHeat = 50;
+				meldung = "So kann ich das Wass erhitzen.";
 				showmeldung = true;
+				erhitzen = true;
 			}
-			if (blubbern == true) {
-				kochen.enableEmission = true;
-				rauch3.enableEmission = true;
-				meldung = "Super,das Wasser ist nun heiß!";
+			else {
+				meldung = "Das nützt nichts.";
 				showmeldung = true;
 			}
 		}
-
-
 
 		if (collider.gameObject == hammer) {
 			meldung = "Das nützt nichts.";
@@ -130,6 +135,7 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		if (collider.gameObject == eisblock) {
 			if (database.items [6].itemHeat == 800) {
 				anim2.SetTrigger("schmelzen");
+				anim.SetTrigger("kippen");
 				meldung = "Super, das Eis schmilzt!\n\nSo kann ich mein Baby befreien!";
 				ende = true;
 			}
