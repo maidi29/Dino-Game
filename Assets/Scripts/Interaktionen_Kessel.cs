@@ -12,10 +12,14 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	GameObject eimer;
 	GameObject eisblock;
 	GameObject see;
+
 	
 	Animator anim;
 	Animator anim2;
-	
+
+	public Camera cam1;
+	public Camera cam2;
+
 	string meldung;
 	bool showmeldung = false;
 	bool ende = false; 
@@ -24,12 +28,14 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	bool erhitzen = false;
 
 
+
 	private float waterhot;
 	public float cooldown;
 	public ParticleSystem wasser;
 	public ParticleSystem rauch2;
 	public ParticleSystem rauch3;
 	public ParticleSystem kochen;
+	public ParticleSystem fließen;
 
 	
 	void Start () {
@@ -45,13 +51,18 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		rauch2.enableEmission = false;
 		kochen.enableEmission = false;
 		rauch3.enableEmission = false;
+		fließen.enableEmission = false;
 
 		anim = gameObject.GetComponent<Animator> ();
 		anim2 = eisblock.GetComponent <Animator> ();
 		cooldown = 13f;
 		waterhot = 1f;
 
+		cam1.enabled = true;
+		cam2.enabled = false;
+
 		wasser.enableEmission = true;
+
 	}
 
 	void Update(){
@@ -97,7 +108,7 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	
 	void OnGUI() {
 		if (showmeldung) {
-			GUI.Box (new Rect (300, 20, 300, 100), meldung, skin.GetStyle ("Slot"));
+			GUI.Box (new Rect (10, 220, 300, 70), meldung, skin.GetStyle ("Slot"));
 		}
 	}
 	
@@ -134,6 +145,9 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		
 		if (collider.gameObject == eisblock) {
 			if (database.items [6].itemHeat == 800) {
+				cam1.enabled = false;
+				cam2.enabled = true; 
+				fließen.enableEmission = true;
 				anim2.SetTrigger("schmelzen");
 				anim.SetTrigger("kippen");
 				meldung = "Super, das Eis schmilzt!\n\nSo kann ich mein Baby befreien!";
