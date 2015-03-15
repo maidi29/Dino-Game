@@ -38,7 +38,8 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	public ParticleSystem kochen;
 	public ParticleSystem fließen;
 
-
+	public AudioSource water;
+	public AudioSource pour;
 	
 	void Start () {
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
@@ -107,9 +108,6 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		}
 	
 	}
-
-	
-
 	
 	void OnGUI() {
 		if (showmeldung) {
@@ -154,7 +152,9 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		if (collider.gameObject == eisblock) {
 			if (database.items [6].itemHeat == 800) {
 				cam1.enabled = false;
-				cam2.enabled = true; 
+				cam2.enabled = true;
+				water.Stop ();
+				pour.Play ();
 				fließen.enableEmission = true;
 				anim2.SetTrigger("schmelzen");
 				anim.SetTrigger("kippen");
@@ -168,6 +168,14 @@ public class Interaktionen_Kessel : MonoBehaviour {
 			showmeldung = true;
 		}
 
+	}
+
+	void OnTriggerStay (Collider collider) {
+		if (collider.gameObject == holz){
+			if((database.items [1].itemHeat == 800) && (wasser.enableEmission == true) && (database.items [6].itemHeat == 800)) {
+				water.Play();
+			}
+		}
 	}
 	
 	void OnTriggerExit (Collider collider) {
