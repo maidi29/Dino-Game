@@ -29,6 +29,7 @@ public class Interaktionen_Kessel : MonoBehaviour {
 
 
 
+
 	private float waterhot;
 	public float cooldown;
 	public ParticleSystem wasser;
@@ -36,6 +37,7 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	public ParticleSystem rauch3;
 	public ParticleSystem kochen;
 	public ParticleSystem fließen;
+
 
 	
 	void Start () {
@@ -55,8 +57,10 @@ public class Interaktionen_Kessel : MonoBehaviour {
 
 		anim = gameObject.GetComponent<Animator> ();
 		anim2 = eisblock.GetComponent <Animator> ();
+
 		cooldown = 13f;
 		waterhot = 1f;
+
 
 		cam1.enabled = true;
 		cam2.enabled = false;
@@ -88,6 +92,7 @@ public class Interaktionen_Kessel : MonoBehaviour {
 			database.items [6].itemHeat = 800;
 			meldung = "Super,das Wasser ist nun heiß!";
 			showmeldung = true;
+
 		}
 	}
 
@@ -123,14 +128,17 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		if (collider.gameObject == holz){
 		    if((database.items [1].itemHeat == 800) && (wasser.enableEmission == true)) {
 				database.items [6].itemHeat = 50;
-				meldung = "So kann ich das Wass erhitzen.";
+				meldung = "So kann ich das Wasser erhitzen.";
 				showmeldung = true;
 				erhitzen = true;
 			}
-			else {
+
+
+		else {
 				meldung = "Das nützt nichts.";
 				showmeldung = true;
 			}
+
 		}
 
 		if (collider.gameObject == hammer) {

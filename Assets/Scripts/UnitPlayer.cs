@@ -7,13 +7,22 @@ public class UnitPlayer : Unit
 	
 	public float cameraPitchMax = 45f;
 
+
+
+
 	Animator anim;
+
+
 	
 	// Use this for initialization
 	public override void Start ()
 	{
 		base.Start ();
 		anim = GetComponent<Animator>();
+
+
+
+
 	}
 	
 	// Update is called once per frame
@@ -22,6 +31,8 @@ public class UnitPlayer : Unit
 		anim.SetFloat ("Speed", 0f);
 
 		// rotation
+	
+
 
 		transform.Rotate (0f, Input.GetAxis ("Mouse X") * turnSpeed * Time.deltaTime, 0f);
 		
@@ -41,20 +52,28 @@ public class UnitPlayer : Unit
 		move = transform.TransformDirection (move);
 
 		walk = Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow);
-		if (walk) {
+		if (walk && audio.isPlaying ==false) {
 						anim.SetFloat ("Speed", walkSpeed);
+			audio.volume = Random.Range (0.4f,0.6f);
+			audio.pitch = 1f;
+		
+						audio.Play ();
+						
 				}
 
 		if (Input.GetKey(KeyCode.Space) && control.isGrounded)
 		{
 			jump = true;
 			anim.SetTrigger("Jump");
+			audio.Stop();
+	
 		}
 		
 		running = Input.GetKey (KeyCode.LeftShift)  || Input.GetKey (KeyCode.RightShift);
 
 		if (running) {
 						anim.SetFloat ("Speed", runSpeed);
+			audio.pitch = 1.5f;
 				}
 		grab = Input.GetKey (KeyCode.E);
 		if (grab) {
