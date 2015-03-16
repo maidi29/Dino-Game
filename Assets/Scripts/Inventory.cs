@@ -38,7 +38,8 @@ public class Inventory : MonoBehaviour {
 
 	public bool use = false;
 	
-	
+	AudioSource audio;
+	public AudioClip gotitem;
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i < (slotsX * slotsY); i++){
@@ -50,6 +51,7 @@ public class Inventory : MonoBehaviour {
 		dino = GameObject.FindGameObjectWithTag ("Player");
 		hands = dino.transform.FindChild ("Krallen3");
 
+		audio = gameObject.GetComponent<AudioSource> ();
 
 
 	}
@@ -75,12 +77,12 @@ public class Inventory : MonoBehaviour {
 		GUI.skin = skin;
 		if (showInventory) {
 			DrawInventory ();
-			if (GUI.Button (new Rect (10, 190, 100, 40), "Save", skin.GetStyle("Slot"))) {
+			/*if (GUI.Button (new Rect (10, 190, 100, 40), "Save", skin.GetStyle("Slot"))) {
 				SaveInventory ();
 			}
 			if (GUI.Button (new Rect (120, 190, 100, 40), "Load", skin.GetStyle("Slot"))) {
 				LoadInventory();
-			}
+			}*/
 			if (showTooltip) {
 				GUI.Box (new Rect(Event.current.mousePosition.x + 15f, Event.current.mousePosition.y, 150, 200), tooltip, skin.GetStyle("Tooltip"));
 			}
@@ -172,6 +174,7 @@ public class Inventory : MonoBehaviour {
 				break;
 			}
 		}
+		audio.PlayOneShot (gotitem);
 	}
 	
 	//Check if Object with Certain ID is in the inventory:
@@ -276,7 +279,7 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 	
-	void SaveInventory () {
+	/*void SaveInventory () {
 		for(int i = 0; i < inventory.Count; i++) {
 			PlayerPrefs.SetInt ("Inventory "+ i, inventory[i].itemID);
 		}
@@ -285,5 +288,5 @@ public class Inventory : MonoBehaviour {
 		for(int i = 0; i < inventory.Count; i++) {
 			inventory[i] = PlayerPrefs.GetInt ("Inventory " + i, -1) >= 0 ? database.items[PlayerPrefs.GetInt ("Inventory " + i)] : new Item() ;
 		}
-	}
+	}*/
 }
