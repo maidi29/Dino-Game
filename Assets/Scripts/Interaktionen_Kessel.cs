@@ -173,6 +173,7 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	void OnTriggerStay (Collider collider) {
 		if (collider.gameObject == holz){
 			if((database.items [1].itemHeat == 800) && (wasser.enableEmission == true) && (database.items [6].itemHeat == 800)) {
+				water.pitch = 0.5f;
 				water.Play();
 			}
 		}

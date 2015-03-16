@@ -4,6 +4,7 @@ using System.Collections;
 public class Interaktionen_Holz : MonoBehaviour {
 
 	GameObject eisblock;
+	GameObject feuerzeug;
 	string meldung;
 	bool showmeldung = false;
 	public ItemDatabase database;
@@ -13,6 +14,7 @@ public class Interaktionen_Holz : MonoBehaviour {
 	void Start () {
 		database = GameObject.FindGameObjectWithTag("Item Database").GetComponent<ItemDatabase>();
 		eisblock = GameObject.Find ("Eisblock");
+		feuerzeug = GameObject.Find ("Feuerzeug");
 	}
 	
 	// Update is called once per frame
@@ -32,6 +34,9 @@ public class Interaktionen_Holz : MonoBehaviour {
 				meldung = "Achtung! Ich könnte mein Baby\n\nmit dem offenen Feuer verletzen.";
 			}
 			showmeldung = true;
+		}
+		if (collider.gameObject == feuerzeug && audio.isPlaying == false) {
+			audio.Play ();
 		}
 	}
 
