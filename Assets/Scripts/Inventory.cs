@@ -16,7 +16,6 @@ public class Inventory : MonoBehaviour {
 	private Item draggedItem;
 	private int prevIndex;
 	
-	
 	public GameObject feuerzeug;
 	public GameObject kessel;
 	public GameObject holz;
@@ -40,6 +39,7 @@ public class Inventory : MonoBehaviour {
 	
 	AudioSource audio;
 	public AudioClip gotitem;
+
 	// Use this for initialization
 	void Start () {
 		for (int i = 0; i < (slotsX * slotsY); i++){
@@ -148,6 +148,7 @@ public class Inventory : MonoBehaviour {
 			}
 		}
 	}
+
 	string CreateTooltip (Item item) {
 		tooltip = item.itemName + "\n\n" + item.itemDesc + "\n\n Linksklick um zu benutzen \n\n Rechtsklick um abzulegen";
 		return tooltip;

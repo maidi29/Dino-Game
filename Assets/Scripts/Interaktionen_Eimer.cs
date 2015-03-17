@@ -5,7 +5,6 @@ public class Interaktionen_Eimer: MonoBehaviour {
 	
 	public ItemDatabase database;
 	public GUISkin skin;
-	
 
 	GameObject hammer;
 	GameObject fön;
@@ -35,8 +34,6 @@ public class Interaktionen_Eimer: MonoBehaviour {
 		animator = gameObject.GetComponent<Animator> ();
 		wasser.enableEmission = false;
 		wasser2.enableEmission = false;
-
-		
 	}
 	
 	void Update () {

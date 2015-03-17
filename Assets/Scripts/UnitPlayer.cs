@@ -16,28 +16,19 @@ public class UnitPlayer : Unit
 
 	
 	// Use this for initialization
-	public override void Start ()
-	{
+	public override void Start () {
 		base.Start ();
 		anim = GetComponent<Animator>();
-
-
-
-
 	}
 	
 	// Update is called once per frame
-	public override void Update ()
-	{	
+	public override void Update (){
 		if(inwater) {
 			footstep.mute = true;
 		}
-
 		anim.SetFloat ("Speed", 0f);
 
 		// rotation
-		
-
 
 		transform.Rotate (0f, Input.GetAxis ("Mouse X") * turnSpeed * Time.deltaTime, 0f);
 		
@@ -65,8 +56,7 @@ public class UnitPlayer : Unit
 			footstep.mute = false;
 		}
 
-		if (Input.GetKey(KeyCode.Space) && control.isGrounded)
-		{
+		if (Input.GetKey(KeyCode.Space) && control.isGrounded){
 			jump = true;
 			anim.SetTrigger("Jump");
 			footstep.mute = true;
@@ -79,13 +69,14 @@ public class UnitPlayer : Unit
 			anim.SetFloat ("Speed", runSpeed);
 			footstep.pitch = 1.5f;
 			waterfootstep.pitch = 1.5f;
-				}
+		}
 		grab = Input.GetKey (KeyCode.E);
 		if (grab) {
-						anim.SetTrigger ("Grab");
-				}
+			anim.SetTrigger ("Grab");
+		}
 		base.Update ();
 	}
+
 	void OnTriggerStay(Collider col) {
 		if (col.gameObject.tag == "Water") {
 			if (walk == true && waterfootstep.isPlaying ==false) {

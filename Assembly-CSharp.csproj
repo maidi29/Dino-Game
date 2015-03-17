@@ -68,8 +68,6 @@
      <Compile Include="Assets\Scripts\interaktionen_fön.cs" />
      <Compile Include="Assets\Scripts\interaktionen_hammer.cs" />
      <Compile Include="Assets\Scripts\minimap.cs" />
-     <Compile Include="Assets\Scripts\sound.cs" />
-     <Compile Include="Assets\Scripts\walkingwatersound.cs" />
      <Compile Include="Assets\Start2.cs" />
      <Compile Include="Assets\watersound.cs" />
      <None Include="Assets\Standard Assets\Water (Pro Only)\Water4\Sources\Shaders\FX-SimpleWater4.shader" />

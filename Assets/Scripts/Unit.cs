@@ -10,8 +10,6 @@ public class Unit : MonoBehaviour
 	
 	protected Vector3 move = Vector3.zero;
 
-
-	
 	public float walkSpeed = 2.5f;
 	public float runSpeed = 5f;
 	public float turnSpeed = 90f;
@@ -29,8 +27,6 @@ public class Unit : MonoBehaviour
 	{
 		control = GetComponent<CharacterController>();
 
-
-		
 		if (!control)
 		{
 			Debug.LogError("Unit.Start() " + name + " has no CharacterController!");

@@ -35,7 +35,6 @@ public class Interaktionen_Feuerzeug : MonoBehaviour {
 		rauch.enableEmission = false;
 
 		animator = eimer.GetComponent<Animator> ();
-
 	}
 
 	void Update () {

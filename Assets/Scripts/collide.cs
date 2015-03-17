@@ -17,28 +17,25 @@ public class collide : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 	}
 
-		void OnTriggerStay(Collider other) {
-			if (other.gameObject.tag == "Item") {
-				if (Input.GetKey (KeyCode.E)) {
-					inventoryScript.use = false;
-					other.gameObject.SetActive (false);
-					other.gameObject.GetComponent<ItemBounce>().enabled = false;
-					indexScript = other.gameObject.GetComponent<Index> ();
-					inventoryScript.AddItem (indexScript.index);
-					tipp.text = "";
-					
-				}
-			if (other.gameObject.activeSelf) {
-					tipp.text = "Drücke E um das Objekt aufzusammeln.";
-				}
+	void OnTriggerStay(Collider other) {
+		if (other.gameObject.tag == "Item") {
+			if (Input.GetKey (KeyCode.E)) {
+				inventoryScript.use = false;
+				other.gameObject.SetActive (false);
+				other.gameObject.GetComponent<ItemBounce>().enabled = false;
+				indexScript = other.gameObject.GetComponent<Index> ();
+				inventoryScript.AddItem (indexScript.index);
+				tipp.text = "";
 			}
-		}
-		
-		void OnTriggerExit(Collider other) {
-			tipp.text = "";
+		if (other.gameObject.activeSelf) {
+				tipp.text = "Drücke E um das Objekt aufzusammeln.";
+			}
 		}
 	}
 	
+	void OnTriggerExit(Collider other) {
+		tipp.text = "";
+	}
+}

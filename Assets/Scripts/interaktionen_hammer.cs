@@ -35,42 +35,41 @@ public class interaktionen_hammer : MonoBehaviour {
 	}
 
 	void OnGUI() {
-	if (showmeldung) {
-		GUI.Box (new Rect (300, 20, 300, 100), meldung, skin.GetStyle ("Slot"));
+		if (showmeldung) {
+			GUI.Box (new Rect (300, 20, 300, 100), meldung, skin.GetStyle ("Slot"));
+		}
+	}
+
+	void OnTriggerEnter (Collider collider) {
+
+		if (collider.gameObject == holz) {
+			meldung = "Das nützt nichts.";
+			showmeldung = true;
+		}
+		if (collider.gameObject == kessel) {
+			meldung = "Das nützt nichts.";
+			showmeldung = true;
+		}
+			if (collider.gameObject == fön) {
+			meldung = "Das nützt nichts.";
+			showmeldung = true;
+		}
+		if (collider.gameObject == feuerzeug) {
+			meldung = "Das nützt nichts.";
+			showmeldung = true;
+		}
+		if (collider.gameObject == eimer) {
+			meldung = "Das nützt nichts";
+			showmeldung = true;
+		}
+		if (collider.gameObject == eisblock) {
+			meldung = "Das ist zu gefährlich für das Baby!";
+			showmeldung = true;
+		}
+	}
+
+	void OnTriggerExit (Collider collider) {
+		showmeldung = false;
+		meldung = "";
 	}
 }
-
-void OnTriggerEnter (Collider collider) {
-
-	if (collider.gameObject == holz) {
-		meldung = "Das nützt nichts.";
-		showmeldung = true;
-	}
-	if (collider.gameObject == kessel) {
-		meldung = "Das nützt nichts.";
-		showmeldung = true;
-	}
-		if (collider.gameObject == fön) {
-		meldung = "Das nützt nichts.";
-		showmeldung = true;
-	}
-	if (collider.gameObject == feuerzeug) {
-		meldung = "Das nützt nichts.";
-		showmeldung = true;
-	}
-	if (collider.gameObject == eimer) {
-		meldung = "Das nützt nichts";
-		showmeldung = true;
-	}
-	if (collider.gameObject == eisblock) {
-		meldung = "Das ist zu gefährlich für das Baby!";
-		showmeldung = true;
-	}
-}
-
-void OnTriggerExit (Collider collider) {
-	showmeldung = false;
-	meldung = "";
-}
-}
-
