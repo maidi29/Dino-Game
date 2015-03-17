@@ -7,16 +7,28 @@ public class collide : MonoBehaviour {
 	private Index indexScript;
 	private Inventory inventoryScript;
 	GUIText tipp;
-
+	GameObject eisblock;
+	string meldung;
+	bool showmeldung = false;
+	public GUISkin skin;
 
 	// Use this for initialization
 	void Start () {
 		inventoryScript = InventoryGO.GetComponent<Inventory> ();
 		tipp = GameObject.Find("Tipp2").guiText;
+		eisblock = GameObject.Find ("Eisblock");
 	}
-	
+	void OnGUI() {
+		if (showmeldung) {
+			GUI.Box (new Rect (300, 20, 300, 100), meldung, skin.GetStyle ("Slot"));
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
+	}
+
+	void OnTriggerEnter (Collider other) {
 	}
 
 	void OnTriggerStay(Collider other) {
@@ -29,9 +41,13 @@ public class collide : MonoBehaviour {
 				inventoryScript.AddItem (indexScript.index);
 				tipp.text = "";
 			}
-		if (other.gameObject.activeSelf) {
+			if (other.gameObject.activeSelf) {
 				tipp.text = "Drücke E um das Objekt aufzusammeln.";
 			}
+		}
+		if (other.gameObject == eisblock) {
+			meldung = "Mein Baby! Ich muss einen Weg\n\nfinden um es zu befreien.";
+			showmeldung = true;
 		}
 	}
 	
