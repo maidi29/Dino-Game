@@ -114,7 +114,6 @@ public class Interaktionen_Kessel : MonoBehaviour {
 			showmeldung = true;
 				}
 
-
 		if (collider.gameObject == holz){
 		    if((database.items [1].itemHeat == 800) && (wasser.enableEmission == true)) {
 				database.items [6].itemHeat = 50;
@@ -122,12 +121,10 @@ public class Interaktionen_Kessel : MonoBehaviour {
 				showmeldung = true;
 				erhitzen = true;
 			}
-
-		else {
+			else {
 				meldung = "Das nützt nichts.";
 				showmeldung = true;
 			}
-
 		}
 
 		if (collider.gameObject == hammer) {
