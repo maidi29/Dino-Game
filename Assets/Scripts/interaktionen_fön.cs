@@ -63,7 +63,7 @@ public class interaktionen_fön : MonoBehaviour {
 			showmeldung = true;
 		}
 		if (collider.gameObject == eisblock) {
-			meldung = "Gute Idee, aber hier in \n\nder Eiswelt gibt es doch keinen Strom!";
+			meldung = "Gute Idee, aber hier in der\n\nEiswelt gibt es doch keinen Strom!";
 			showmeldung = true;
 		}
 	}

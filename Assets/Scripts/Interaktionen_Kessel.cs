@@ -12,7 +12,6 @@ public class Interaktionen_Kessel : MonoBehaviour {
 	GameObject eimer;
 	GameObject eisblock;
 	GameObject see;
-
 	
 	Animator anim;
 	Animator anim2;
@@ -22,13 +21,11 @@ public class Interaktionen_Kessel : MonoBehaviour {
 
 	string meldung;
 	bool showmeldung = false;
+	bool showletztemeldung = false;
 	bool ende = false; 
 	bool sieden = false;
 	bool blubbern = false;
 	bool erhitzen = false;
-
-
-
 
 	private float waterhot;
 	public float cooldown;
@@ -62,12 +59,8 @@ public class Interaktionen_Kessel : MonoBehaviour {
 		cooldown = 13f;
 		waterhot = 1f;
 
-
 		cam1.enabled = true;
 		cam2.enabled = false;
-
-		wasser.enableEmission = true;
-
 	}
 
 	void Update(){
@@ -93,10 +86,8 @@ public class Interaktionen_Kessel : MonoBehaviour {
 			database.items [6].itemHeat = 800;
 			meldung = "Super,das Wasser ist nun heiß!";
 			showmeldung = true;
-
 		}
 	}
-
 
 	void FixedUpdate () {
 		if (ende == true) {
@@ -104,13 +95,14 @@ public class Interaktionen_Kessel : MonoBehaviour {
 			if (cooldown <= 0) {
 				Application.LoadLevel("Ende");
 			}					 
-
 		}
-	
 	}
 	
 	void OnGUI() {
 		if (showmeldung) {
+			GUI.Box (new Rect (300, 20, 300, 100), meldung, skin.GetStyle ("Slot"));
+		}
+		if (showletztemeldung) {
 			GUI.Box (new Rect (10, 220, 300, 70), meldung, skin.GetStyle ("Slot"));
 		}
 	}
@@ -131,7 +123,6 @@ public class Interaktionen_Kessel : MonoBehaviour {
 				erhitzen = true;
 			}
 
-
 		else {
 				meldung = "Das nützt nichts.";
 				showmeldung = true;
@@ -147,7 +138,6 @@ public class Interaktionen_Kessel : MonoBehaviour {
 			meldung = "Das nützt nichts.";
 			showmeldung = true;
 		}
-
 		
 		if (collider.gameObject == eisblock) {
 			if (database.items [6].itemHeat == 800) {
@@ -160,14 +150,13 @@ public class Interaktionen_Kessel : MonoBehaviour {
 				anim.SetTrigger("kippen");
 				meldung = "Super, das Eis schmilzt!\n\nSo kann ich mein Baby befreien!";
 				ende = true;
+				showletztemeldung = true;
 			}
 			else {
 			meldung = "Das nützt nichts.";
-			}
-
 			showmeldung = true;
+			}
 		}
-
 	}
 
 	void OnTriggerStay (Collider collider) {

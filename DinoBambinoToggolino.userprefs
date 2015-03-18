@@ -1,10 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\collide.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UnitPlayer.cs">
     <Files>
-      <File FileName="Assets\Scripts\collide.cs" Line="36" Column="35" />
-      <File FileName="Assets\Scripts\Inventory.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\collide.cs" Line="18" Column="5" />
+      <File FileName="Assets\Scripts\Inventory.cs" Line="267" Column="34" />
       <File FileName="Assets\Scripts\Interaktionen_Eimer.cs" Line="22" Column="32" />
+      <File FileName="Assets\Scripts\Interaktionen_Kessel.cs" Line="154" Column="5" />
+      <File FileName="Assets\Scripts\Interaktionen_Feuerzeug.cs" Line="46" Column="4" />
+      <File FileName="Assets\Scripts\Interaktionen_Holz.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UnitPlayer.cs" Line="66" Column="4" />
+      <File FileName="Assets\Scripts\interaktionen_fön.cs" Line="76" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

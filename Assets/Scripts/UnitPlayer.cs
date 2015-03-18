@@ -10,10 +10,7 @@ public class UnitPlayer : Unit
 	public AudioSource footstep;
 	public AudioSource waterfootstep;
 	bool inwater = false;
-
 	Animator anim;
-
-
 	
 	// Use this for initialization
 	public override void Start () {
@@ -26,7 +23,6 @@ public class UnitPlayer : Unit
 		if(inwater) {
 			footstep.mute = true;
 		}
-		anim.SetFloat ("Speed", 0f);
 
 		// rotation
 
@@ -48,7 +44,7 @@ public class UnitPlayer : Unit
 		move = transform.TransformDirection (move);
 
 		walk = Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.UpArrow);
-		if (walk == true && footstep.isPlaying ==false) {
+		if (walk == true && footstep.isPlaying == false && control.isGrounded) {
 			anim.SetFloat ("Speed", walkSpeed);
 			footstep.volume = Random.Range (0.4f,0.6f);
 			footstep.pitch = 1f;
@@ -56,9 +52,18 @@ public class UnitPlayer : Unit
 			footstep.mute = false;
 		}
 
+		if (walk == false) {
+			anim.SetFloat ("Speed", 0f);
+		}
+
 		if (Input.GetKey(KeyCode.Space) && control.isGrounded){
 			jump = true;
 			anim.SetTrigger("Jump");
+			footstep.mute = true;
+			waterfootstep.mute = true;
+		}
+
+		if (control.isGrounded == false) {
 			footstep.mute = true;
 			waterfootstep.mute = true;
 		}
@@ -81,11 +86,20 @@ public class UnitPlayer : Unit
 		if (col.gameObject.tag == "Water") {
 			if (walk == true && waterfootstep.isPlaying ==false) {
 				inwater = true;
+				walkSpeed = 1.5f;
+				runSpeed = 3;
 				waterfootstep.volume = Random.Range (0.4f,0.6f);
 				waterfootstep.pitch = 1f;
 				waterfootstep.mute = false;
 				waterfootstep.Play ();
 			}
+		}
+	}
+	void OnTriggerExit(Collider col) {
+		if (col.gameObject.tag == "Water") {
+			inwater = false;
+			walkSpeed = 2.5f;
+			runSpeed = 5;
 		}
 	}
 }

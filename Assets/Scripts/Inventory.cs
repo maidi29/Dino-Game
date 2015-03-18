@@ -239,42 +239,42 @@ public class Inventory : MonoBehaviour {
 			holz.transform.parent = null;
 			holz.transform.position = dinoposition + placevec+ vecup;
 			holz.SetActive (true);
-			Physics.IgnoreCollision(holz.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
+			//Physics.IgnoreCollision(holz.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
 			break;
 		}
 		case 2: {
 			feuerzeug.transform.parent = null;
 			feuerzeug.transform.position = dinoposition + placevec;
 			feuerzeug.SetActive (true);
-			Physics.IgnoreCollision(feuerzeug.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
+			//Physics.IgnoreCollision(feuerzeug.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
 			break;
 		}
 		case 3: {
 			hammer.transform.parent = null;
 			hammer.transform.position = dinoposition + placevec+ vecup;
 			hammer.SetActive (true);
-			Physics.IgnoreCollision(hammer.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
+			//Physics.IgnoreCollision(hammer.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
 			break;
 		}
 		case 4: {
 			foen.transform.parent = null;
 			foen.transform.position = dinoposition + placevec;
 			foen.SetActive (true);
-			Physics.IgnoreCollision(foen.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
+			//Physics.IgnoreCollision(foen.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
 			break;
 		}			
 		case 5:  {
 			eimer.transform.parent = null;
 			eimer.transform.position = dinoposition + placevec+ vecup;
 			eimer.SetActive (true);
-			Physics.IgnoreCollision(eimer.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
+			//Physics.IgnoreCollision(eimer.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
 			break;
 		}
 		case 6:{
 			kessel.transform.parent = null;
 			kessel.transform.position = dinoposition + placevec+ dino.transform.up * 0.75f;
 			kessel.SetActive (true);
-			Physics.IgnoreCollision(kessel.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
+			//Physics.IgnoreCollision(kessel.GetComponent<SphereCollider>(), dino.GetComponent<SphereCollider>());
 			break;
 		}	
 		}
